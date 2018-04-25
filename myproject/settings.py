@@ -230,6 +230,7 @@ if DJANGO_VERSION < (1, 9):
 ################
 
 INSTALLED_APPS = (
+    "nova",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -317,6 +318,8 @@ if os.path.exists(f):
     sys.modules[module_name] = module
     exec(open(f, "rb").read())
 
+# wolf added
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 ####################
 # DYNAMIC SETTINGS #
@@ -334,3 +337,4 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
